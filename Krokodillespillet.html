@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+<script>
+    //model
+let numRight;
+let numLeft;
+let points = 0;
+
+//view
+randomNum()
+function updateView() {
+    document.getElementById('app').innerHTML = /*html*/`
+    <h1>Krokodillespillet</h1><br>
+    <div id="textBox">
+        <img src="Krokodille.jpg"><br>
+        <p>Hvilket tall er størst? Eller er de like?<br>
+        Bruk <strong>>, < </strong> eller <strong>=</strong></p>
+        <p id="tallSize"> ${numLeft} ? ${numRight}</p>
+        <input id="input" type="text"><br>
+        <p>Poeng: ${points}</p>
+        <button onclick="check(input.value)">Sjekk</button>
+        <button onclick="reset()">Nullstill</button>
+    </div>
+    
+    `;
+}
+updateView();
+
+//controller
+function check(input) {
+    if (input === ">" && numLeft > numRight) {
+        points++;
+    }
+    else if (input === "<" && numLeft < numRight) {
+        points++;
+    }
+    else if (input === "=" && numLeft === numRight) {
+        points++;
+    }
+    else {
+        points--;
+    }
+    randomNum();
+
+}
+
+function randomNum() {
+    numLeft = Math.round(Math.random() * 10);
+    numRight = Math.round(Math.random() * 10);
+    updateView();
+}
+
+//function getRandomNumber(){
+//            return Math.round(Math.random() * 10);
+//}
+
+function reset() {
+    points = 0;
+    randomNum()
+}
+
+</script>
+</body>
+<style>
+    img{
+        height: 100px; 
+        width: 100px;
+    }
+    input{
+        width: 50px;
+    }
+</style>
+</html>

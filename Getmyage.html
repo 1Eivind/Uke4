@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave get my age</title>
+    <style>
+       
+        body {
+    background-color: #86238150;
+    }
+
+    #container{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
+
+   </style>
+</head>
+<body>
+
+
+<br>
+<div id="container">
+    <p>Finally solved it!!!!!!!!!!!!!!!!!!!!!</p>
+<button>Skriv inn navn:</button>
+    <input id="dittnavn" type=text placeholder="Navn">
+   
+
+
+
+    <input id="fødselsår" type="number" placeholder="1990">
+    <button>:Skriv året du ble født</button>
+
+  
+<h1 id="output">Fyll inn detaljene for å regne ut alderen din.</h1>
+<div id="output"></div>
+
+<button onclick="visAlder();">Regn ut!</button></div>
+
+
+<script>
+
+ //    var form = document.getElementById('form');
+  //   number = document.getElementById('yearOfBirth');
+  //   form.onsubmit = getAge(yearOfBirth);
+   //  var variable = number.value;
+   //  alert(myage);
+  
+
+//    function savename() {
+//       var dittnavn;
+//       dittnavn = document.getElementById('dittnavn');
+//    }
+//       function saveYOB() {
+//       var fødselsår;
+//       fødselsår = document.getElementById('fødselsår').value;
+//       // Do whatever you want with the value here.
+//}
+
+// dittnavn = document.getElementById=('dittnavn').innerHTML.value
+
+     function finnAlder(fødselsår){
+      let todaysDate = new Date(); //innebygd javascript funksjon som henter datens dato
+      let year = todaysDate.getFullYear(); //henter ut årstall fra dagens dato
+      let alder = year - fødselsår;
+      return alder;
+     }
+//let myAge = getAge(1978);
+
+function visAlder(){
+    let navn = document.getElementById('dittnavn').value;
+    console.log(navn)
+    let fødselsår = parseInt(document.getElementById('fødselsår').value);
+    console.log('fødselsår')
+    let alder = finnAlder(fødselsår);
+    console.log('alder')
+    document.getElementById('output').innerHTML = `Du heter ${navn} og er ${alder} år gammel.`;
+}
+
+
+</script>
+    
+</body>
+</html>
